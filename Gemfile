@@ -25,11 +25,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rest-client'
 gem 'prawn'
 gem 'rubyzip'
-gem 'interactor-rails'
+# 'Command' pattern implementation for Rails
+gem 'interactor-rails', '~> 2.0'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.8'
+  gem 'byebug'
 end
 
 group :development do
@@ -44,12 +44,9 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
+  gem 'rspec-rails', '~> 3.8'
+  gem 'webmock'
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'capybara-webkit'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

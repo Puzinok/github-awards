@@ -1,0 +1,25 @@
+Rails:
+  Enabled: true
+Metrics/LineLength:
+  Max: 150
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Style/EmptyMethod:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+
+AllCops:
+  TargetRubyVersion: '2.6'
+  Exclude:
+    - Gemfile
+    - db/*
+    - config/**/*
+    - bin/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    - db/migrate/*

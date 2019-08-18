@@ -7,6 +7,7 @@ ruby '2.6.2'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'redis-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -28,6 +29,9 @@ gem 'rubyzip'
 # 'Command' pattern implementation for Rails
 gem 'interactor-rails', '~> 2.0'
 
+gem 'slim-rails'
+gem 'jquery-rails'
+
 group :development, :test do
   gem 'byebug'
 end
@@ -47,6 +51,7 @@ group :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'webmock'
   gem 'capybara', '>= 2.15'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit', branch: 'master'
+  gem 'pdf-inspector', require: "pdf/inspector"
 end
 

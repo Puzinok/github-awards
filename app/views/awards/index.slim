@@ -1,0 +1,7 @@
+h1 GithubAwards
+= form_with url: awards_path do |f|
+  = f.label :url, "Repo url"
+  = f.text_field :url
+  = f.submit 'search'
+
+.result

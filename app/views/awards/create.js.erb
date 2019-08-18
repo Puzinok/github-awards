@@ -1,0 +1,5 @@
+<% if @result.success? %>
+  $('.result').replaceWith("<%= j render partial: 'table_awards', locals: {cont: @result.contributors, repo: @repo_md5 } %>");
+<% else %>
+  $('.result').replaceWith("<div class='result'><%= @result[:message] %></div>")
+<% end %>

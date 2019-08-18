@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "awards#index"
+
+  resources :awards, only: [:index, :create]
+  
+  get '/downloads/:repo/:login', to: 'awards#download', as: :download
+  get '/downloads/:repo', to: 'awards#download_zip', as: :download_zip
 end

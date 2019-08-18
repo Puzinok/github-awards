@@ -4,7 +4,6 @@ class GithubApi::UrlParser
   def call
     if validate_url(context.url)
       context.url = convert_url(context.url)
-      context.repo_params = repo_name(context.url)
     else
       context.fail!(message: 'Url not correct.')
     end
@@ -21,9 +20,5 @@ class GithubApi::UrlParser
 
     owner, repo_name = url[/github.com\/(\S+\/\S+)/i, 1].split('/')
     "https://api.github.com/repos/#{owner}/#{repo_name}/stats/contributors"
-  end
-
-  def repo_name(url)
-    url[/github.com\/(\S+\/\S+)/i, 1]
   end
 end

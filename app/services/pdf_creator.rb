@@ -18,6 +18,6 @@ class PdfCreator
     end
     pdf.text login, size: 30, align: :center
 
-    pdf
+    pdf.render
   end
 end

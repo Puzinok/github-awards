@@ -9,7 +9,7 @@ feature 'User can download pdf or zip award', %q{
 
   scenario 'User can download zip', js: true do
     visit root_path
-    fill_in 'Repo url', with: 'https://github.com/rails/rails'
+    fill_in 'url', with: 'https://github.com/rails/rails'
     click_on 'search'
 
     click_link 'download zip(3)'
@@ -18,10 +18,10 @@ feature 'User can download pdf or zip award', %q{
 
   scenario 'User can download pdf', js: true do
     visit root_path
-    fill_in 'Repo url', with: 'https://github.com/rails/rails'
+    fill_in 'url', with: 'https://github.com/rails/rails'
     click_on 'search'
 
-    click_link 'dchelimsky'
+    first(:link, 'download pdf').click
     expect(response_headers['Content-Type']).to eq('application/pdf')
   end
 end

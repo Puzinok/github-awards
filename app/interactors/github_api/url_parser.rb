@@ -5,7 +5,7 @@ class GithubApi::UrlParser
     if validate_url(context.url)
       context.url = convert_url(context.url)
     else
-      context.fail!(message: 'Url not correct.')
+      context.fail!(message: 'Url is not correct.')
     end
   end
 

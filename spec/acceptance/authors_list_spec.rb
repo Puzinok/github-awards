@@ -10,15 +10,15 @@ feature 'User can show repo authors', %q{
 
   scenario 'User can see links to pdf', js: true do
     visit root_path
-    fill_in 'Repo url', with: 'https://github.com/rails/rails'
+    fill_in 'url', with: 'https://github.com/rails/rails'
     click_on 'search'
 
-    expect(page).to have_link('JonRowe')
+    expect(page).to have_link('download pdf')
   end
 
   scenario 'User can see link to zip file', js: true do
     visit root_path
-    fill_in 'Repo url', with: 'https://github.com/rails/rails'
+    fill_in 'url', with: 'https://github.com/rails/rails'
     click_on 'search'
 
     expect(page).to have_link('download zip(3)')
@@ -26,15 +26,15 @@ feature 'User can show repo authors', %q{
 
   scenario 'User can see error if repo url not correct', js: true do
     visit root_path
-    fill_in 'Repo url', with: 'https://BUGhub.com/rails/rails'
+    fill_in 'url', with: 'https://BUGhub.com/rails/rails'
     click_on 'search'
 
-    expect(page).to have_content('Url not correct.')
+    expect(page).to have_content('Url is not correct.')
   end
 
   scenario 'User can see if repo not found', js: true do
     visit root_path
-    fill_in 'Repo url', with: 'https://github.com/error/rails'
+    fill_in 'url', with: 'https://github.com/error/rails'
     click_on 'search'
 
     expect(page).to have_content('404 Not Found')

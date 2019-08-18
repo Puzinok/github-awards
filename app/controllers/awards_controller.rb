@@ -3,8 +3,8 @@ class AwardsController < ApplicationController
   end
 
   def download
-    repo = JSON.parse(Redis.new.get(awards_params[:repo]))
-    author = repo.select { |k| k['login'] == awards_params[:login] }.first
+    repo = JSON.parse($redis.get(awards_params[:repo]))
+    author = repo.detect { |k| k['login'] == awards_params[:login] }
     pdf = PdfCreator.create(author['place'], author['login'], author['avatar_url'])
 
     respond_to do |f|
@@ -15,7 +15,7 @@ class AwardsController < ApplicationController
   end
 
   def download_zip
-    repo = JSON.parse(Redis.new.get(awards_params[:repo]))
+    repo = JSON.parse($redis.get(awards_params[:repo]))
     respond_to do |f|
       f.zip do
         files = repo.map do |author|
@@ -33,7 +33,7 @@ class AwardsController < ApplicationController
     @result = FetchStats.call(url: awards_params[:url])
 
     if @result.success?
-      Redis.new.set(@repo_md5, @result.contributors.to_json, ex: 900_000)
+      $redis.set(@repo_md5, @result.contributors.to_json, ex: 900_000)
     end
   end
 

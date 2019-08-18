@@ -1,6 +1,9 @@
 .result
-  - cont.each do |c|
-    p= link_to c[:login], download_path(repo, c[:login], format: :pdf)
+  table.table.w-50
+    - result.contributors.each do |c|
+      tr
+        td = c[:login]
+        td = link_to 'download pdf', download_path(repo, c[:login], format: :pdf)
 
-  br
-  = link_to "download zip(#{cont.size})", download_zip_path(repo, format: :zip)
+  hr
+  = link_to "download zip(#{result.contributors.size})", download_zip_path(repo, format: :zip)

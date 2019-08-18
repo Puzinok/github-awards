@@ -31,6 +31,7 @@ gem 'interactor-rails', '~> 2.0'
 
 gem 'slim-rails'
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
 
 group :development, :test do
   gem 'byebug'

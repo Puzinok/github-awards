@@ -16,7 +16,7 @@ RSpec.describe GithubApi::UrlParser, type: :interactor do
 
     it 'failure if url is wrong' do
       expect(wrong_converter).to be_a_failure
-      expect(wrong_converter.message).to eq('Url not correct.')
+      expect(wrong_converter.message).to eq('Url is not correct.')
     end
   end
 end
